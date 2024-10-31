@@ -1,0 +1,23 @@
+API 藝術家
+System Programming
+Machine Learning
+系學會意見交流平臺
+沒有for和while的遞迴世界
+LLM行為藝術
+Typhoon
+CSIE
+NTNU
+Automata
+Earthquake
+系學會平台
+天氣報告比賽
+即時消息更新應用
+資料可視化競賽
+待辦事項清單
+Never Gonna Give You Up
+抽 Gogoro 一台
+程設加 10 分
+貓咪圖片生成器
+小型投票系統
+音樂播放器
+為什麼要演奏春日影
