@@ -4,18 +4,22 @@ let result_cnt = 0
 
 function preload(){
 
-    content = loadStrings("./content.txt")
     setting = loadJSON("./setting.json")
+    content = loadStrings('./content.txt')
 
 }
 
 function setup(){
+
+    if(!PREVENT_ERROR()) return;
 
     document.querySelector("body > button").innerHTML = content[0]
 
 }
 
 async function Roll(){
+
+    if(!PREVENT_ERROR()) return;
 
     if(!btn_status) return;
 
@@ -29,9 +33,13 @@ async function Roll(){
         cnt += 1;
     }
 
-    if(setting['result'][result_cnt] != -1)
-    document.querySelector("body > button").innerHTML = content[setting['result'][result_cnt]];
+    if(setting['result'][result_cnt] != -1){
 
+        if(setting['result'][result_cnt] < content.length && setting['result'][result_cnt] >= 0)
+        document.querySelector("body > button").innerHTML = content[setting['result'][result_cnt]];
+
+    }
+    
     result_cnt += 1
 
     if(result_cnt >= setting['result'].length) 
@@ -40,6 +48,31 @@ async function Roll(){
     btn_status = 1
 
 }
+
+function PREVENT_ERROR(){
+
+    if(content == undefined){
+        console.log("Content not found!");
+        return 0;
+    }
+
+    if(setting == undefined){
+        console.log("setting not found!");
+        return 0;
+    }
+
+    if(setting["count"] == undefined || 
+    setting["time"] == undefined || setting["result"] == undefined){
+
+        console.log("Wrong setting.json!")
+        return 0;
+
+    }
+
+
+    return 1;
+}
+
 
 function delay(n) {
 	return new Promise(function(resolve) {
