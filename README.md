@@ -17,4 +17,7 @@ setting.json :
 
   the result will keep result to result[-1] after the whole array was indexed.
 
+  repeat : decide if same result will appear more than once
+          "True" : will repeat , otherwise won't
+
 ```

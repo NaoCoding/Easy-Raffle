@@ -1,6 +1,7 @@
 let content , setting
 let btn_status = 1
 let result_cnt = 0
+let repeat_array = []
 
 function preload(){
 
@@ -14,6 +15,9 @@ function setup(){
     if(!PREVENT_ERROR()) return;
 
     document.querySelector("body > button").innerHTML = content[0]
+    if(setting['repeat'] != undefined){
+        repeat_array = new Array(content.length)
+    }
 
 }
 
@@ -26,10 +30,17 @@ async function Roll(){
     btn_status = 0;
 
     var cnt = 0;
+
+    let selected = 0;
     
     while(cnt < setting["count"]){
         await delay(setting["time"]);
-        document.querySelector("body > button").innerHTML = content[Math.floor(Math.random() * content.length)];
+        selected = Math.floor(Math.random() * content.length);
+
+        while(repeat_array[selected] == 1) 
+            selected = Math.floor(Math.random() * content.length);
+
+        document.querySelector("body > button").innerHTML = content[selected];
         cnt += 1;
     }
 
@@ -39,6 +50,8 @@ async function Roll(){
         document.querySelector("body > button").innerHTML = content[setting['result'][result_cnt]];
 
     }
+
+    repeat_array[selected] = 1;
     
     result_cnt += 1
 

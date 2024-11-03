@@ -1,5 +1,6 @@
 {
-    "result": [-1 , 0] ,
+    "result": [-1] ,
     "time": 100,
-    "count": 40
+    "count": 40,
+    "repeat": "False"
 }
